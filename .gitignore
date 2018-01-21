@@ -1,2 +1,19 @@
 
+# virtualenv
+.venv/
 venv
+ENV/
+
+# VC
+.vscode
+
+# Python Notebook
+.ipynb_checkpoints
+
+# ignore compile files
+*.pyc
+
+# Build/distribution
+build
+dist
+scrapebc.egg-info
