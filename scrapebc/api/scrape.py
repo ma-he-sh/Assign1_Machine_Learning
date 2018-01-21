@@ -18,8 +18,9 @@ def _save_json(jsondata, coin_type):
         f.write(json.dumps(jsondata, indent=4))
 
 def _req_coin_url(req_url, coin_type):
-    print req_url
-    
+    """
+        Getting content from url and reading data
+    """
     ptable = pd.read_html(req_url)[0]
     col = list(ptable.columns.values)
 
@@ -27,6 +28,7 @@ def _req_coin_url(req_url, coin_type):
 
     """
         Organize the columns to lists for saving
+        Data is stored in a dictionary
     """
     col_date = df['Date'].tolist()
     col_date = [x.encode('utf-8') for x in col_date]
@@ -71,6 +73,10 @@ if __name__ == "__main__":
     """
         Construct the request URL and parse to scrape data
     """
-    req_url = (URL.format(COIN=COIN_TYPE[0], START_DATE=start_date, END_DATE=end_date))
 
-    _req_coin_url(req_url, COIN_TYPE[0])
+    for c in xrange(len(COIN_TYPE)):
+
+        print COIN_TYPE[c]
+
+        req_url = (URL.format(COIN=COIN_TYPE[c], START_DATE=start_date, END_DATE=end_date))
+        _req_coin_url(req_url, COIN_TYPE[c])
