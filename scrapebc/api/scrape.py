@@ -6,6 +6,7 @@
 import pandas as pd
 import datetime
 import json
+import csv
 from config import URL, COIN_TYPE
 
 def _save_json(jsondata, coin_type):
@@ -14,8 +15,19 @@ def _save_json(jsondata, coin_type):
     """
     file_name = coin_type+".json"
     
-    with open(file_name, "w") as f:
+    with open(file_name, "wb") as f:
         f.write(json.dumps(jsondata, indent=4))
+
+def _save_csv(data, coin_type):
+    """
+        Save data as csv
+    """
+    file_name = coin_type+".csv"
+
+    with open(file_name, "wb") as f:
+        w = csv.DictWriter(f, data.keys())
+        w.writeheader()
+        w.writerow(data)
 
 def _req_coin_url(req_url, coin_type):
     """
@@ -55,6 +67,7 @@ def _req_coin_url(req_url, coin_type):
     }
 
     _save_json(jsondata, coin_type)
+    _save_csv(col_data, coin_type)
 
     #print col_market
 

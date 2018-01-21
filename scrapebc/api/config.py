@@ -9,5 +9,7 @@ URL = "https://coinmarketcap.com/currencies/{COIN}/historical-data/?start={START
 #request coin type
 COIN_TYPE = [
     "bitcoin",
-    "ethereum"
+    "ethereum",
+    "ripple",
+    "litecoin"
 ]

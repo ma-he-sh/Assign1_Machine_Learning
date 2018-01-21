@@ -1,0 +1,9 @@
+html5lib==1.0.1
+lxml==4.1.1
+numpy==1.14.0
+pandas==0.22.0
+python-dateutil==2.6.1
+pytz==2017.3
+scrapebc==0.0.1
+six==1.11.0
+webencodings==0.5.1

@@ -17,3 +17,7 @@ ENV/
 build
 dist
 scrapebc.egg-info
+
+#ignore gathered data
+*.json
+*.csv
