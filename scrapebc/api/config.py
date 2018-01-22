@@ -13,3 +13,7 @@ COIN_TYPE = [
     "ripple",
     "litecoin"
 ]
+
+# Data save directory
+CSV_dir = "./csv_data/"
+JSON_dir = "./json_data/"

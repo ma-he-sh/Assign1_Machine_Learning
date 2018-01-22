@@ -7,22 +7,33 @@ import pandas as pd
 import datetime
 import json
 import csv
-from config import URL, COIN_TYPE
+import os
+from config import URL, COIN_TYPE, CSV_dir, JSON_dir
 
 def _save_json(jsondata, coin_type):
     """
-        Save the formatted JSON data
+        Create folder if not exists and
+        save the formatted JSON data
     """
-    file_name = coin_type+".json"
+
+    if not os.path.exists(JSON_dir):
+        os.makedirs(JSON_dir)
+
+    file_name = JSON_dir+coin_type+".json"
     
     with open(file_name, "wb") as f:
         f.write(json.dumps(jsondata, indent=4))
 
 def _save_csv(data, coin_type):
     """
-        Save data as csv
+        Create folder if not exists and
+        save data as csv
     """
-    file_name = coin_type+".csv"
+
+    if not os.path.exists(CSV_dir):
+        os.makedirs(CSV_dir)
+
+    file_name = CSV_dir+coin_type+".csv"
 
     with open(file_name, "wb") as f:
         w = csv.DictWriter(f, data.keys())
