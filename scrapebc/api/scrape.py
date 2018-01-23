@@ -33,18 +33,24 @@ def _save_csv(data, coin_type):
     if not os.path.exists(CSV_dir):
         os.makedirs(CSV_dir)
 
+    #create a row to insert
+    header_row = ["Date", "Open", "High", "Low", "Close", "Volume", "Market"]
+    rows = zip(data["date"], data["open"], data["high"], data["low"], data["close"], data["volume"], data["market"])
+
     file_name = CSV_dir+coin_type+".csv"
 
     with open(file_name, "wb") as f:
-        w = csv.DictWriter(f, data.keys())
-        w.writeheader()
-        w.writerow(data)
+        w = csv.writer(f)
+        w.writerow(header_row)
+        for row in rows:
+            w.writerow(row)
 
 def _req_coin_url(req_url, coin_type):
     """
         Getting content from url and reading data
     """
     ptable = pd.read_html(req_url)[0]
+
     col = list(ptable.columns.values)
 
     df = pd.DataFrame(ptable)
