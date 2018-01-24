@@ -23,6 +23,8 @@ def _save_json(jsondata, coin_type):
     
     with open(file_name, "wb") as f:
         f.write(json.dumps(jsondata, indent=4))
+    
+    return True
 
 def _save_csv(data, coin_type):
     """
@@ -44,6 +46,8 @@ def _save_csv(data, coin_type):
         w.writerow(header_row)
         for row in rows:
             w.writerow(row)
+
+    return True
 
 def _req_coin_url(req_url, coin_type):
     """
@@ -83,10 +87,15 @@ def _req_coin_url(req_url, coin_type):
         "coin_data": col_data
     }
 
-    _save_json(jsondata, coin_type)
-    _save_csv(col_data, coin_type)
+    """
+        Save the collected data
+    """
+    fileJSON = _save_json(jsondata, coin_type)
+    fileCSV = _save_csv(col_data, coin_type)
 
-    #print col_market
+    #print col_data
+    if(fileJSON and fileCSV):
+        print "Saved: {}".format(coin_type)
 
 if __name__ == "__main__":
 
@@ -98,15 +107,13 @@ if __name__ == "__main__":
     start_date = "20130428"
     end_date = td.strftime("%Y%m%d")
 
-    print start_date+" "+end_date
-
     """
         Construct the request URL and parse to scrape data
     """
 
     for c in xrange(len(COIN_TYPE)):
 
-        print COIN_TYPE[c]
+        print 'Requesting: {coin_type} | Start Date: {Sdate} >> End Date: {Edate}'.format(coin_type=COIN_TYPE[c], Sdate=start_date, Edate=end_date)
 
         req_url = (URL.format(COIN=COIN_TYPE[c], START_DATE=start_date, END_DATE=end_date))
         _req_coin_url(req_url, COIN_TYPE[c])
