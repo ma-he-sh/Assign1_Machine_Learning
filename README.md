@@ -41,7 +41,7 @@ COIN_TYPE = [
 
 ## Storing the scraped data :: JSON and CSV
 ```sh
-Scraped data is stored in /scrapebc/api/csv_data and /scrapebc/api/json_data.
+Scraped data is stored in /scrapebc/api/csv_data and /scrapebc/api/json_data folders.
 ```
 
 
