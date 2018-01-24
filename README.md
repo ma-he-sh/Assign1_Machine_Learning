@@ -12,6 +12,14 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## How I request data from `coinmarketcap.com`
+```sh
+URL = "https://coinmarketcap.com/currencies/{COIN}/historical-data/?start={START_DATE}&end={END_DATE}"
+
+{END_DATE}   => todays date
+{START_DATE} => `coinmarketcap.com` only provide historic data upto 2013-04-28
+```
+
 ## Scraping the data
 ```sh
 cd scrapebc/api/
@@ -31,10 +39,9 @@ COIN_TYPE = [
 ]
 ```
 
-## How I request data from `coinmarketcap.com`
+## Storing the scraped data :: JSON and CSV
 ```sh
-URL = "https://coinmarketcap.com/currencies/{COIN}/historical-data/?start={START_DATE}&end={END_DATE}"
-
-{END_DATE}   => todays date
-{START_DATE} => `coinmarketcap.com` only provide historic data upto 2013-04-28
+Scraped data is stored in /scrapebc/api/csv_data and /scrapebc/api/json_data.
 ```
+
+
