@@ -16,6 +16,24 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+## Folder Structure
+```
+└───Assign1_SOFE4620U
+|   |   setup.py
+|   |   README.md
+|   |   requirements.txt
+│   └───venv
+|   |
+│   └───scrapebc
+|       |   __init__.py
+│       └───api
+|           |   config.py
+|           |   scrape.py
+|           |   __init__.py
+│           └───csv_data  {csv data storing folder}
+│           └───json_data {json data storing folder}
+```
+
 ## Adding additional cryptocurrency types to extract historical data
 ```sh
 goto => /scrapebc/api/config.py
